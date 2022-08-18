@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="success">
+    <ion-title>Inicio turista</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <!-- <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/generar-reserva" color="success">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab> -->
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+
+  <ion-list>
+    <ion-item *ngFor="let r of registros|async" lines="full">
+      <ion-card>
+        <ion-card-content>
+          <ion-label><strong>Fecha: </strong>{{r.date}}</ion-label>
+          <ion-label><strong>Cantidad: </strong>{{r.amount}}</ion-label>
+          <ion-label><strong>Taquillero: </strong>{{r.profiletaqui.user.name}}</ion-label>
+          <ion-label><strong>Turista: </strong>{{r.profileturis.user.name}}</ion-label>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>

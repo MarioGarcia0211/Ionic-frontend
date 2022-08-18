@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Taquilleros</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-list>
+    <ion-item *ngFor="let t of taquilleros|async" lines="full">
+      <ion-card (click)="openDetailModalTaqui(t)">
+        <ion-card-content>
+          <ion-label><strong>Nombre: </strong>{{t.user.name}}</ion-label>
+          <ion-label><strong>Apellido: </strong>{{t.user.lastname}}</ion-label>
+          <ion-label><strong>Email: </strong>{{t.user.email}}</ion-label>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>

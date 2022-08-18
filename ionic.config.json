@@ -1,0 +1,7 @@
+{
+  "name": "FrontendAppWeb",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

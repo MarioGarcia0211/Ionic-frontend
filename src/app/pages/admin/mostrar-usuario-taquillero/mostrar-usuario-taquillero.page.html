@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>Taquilleros</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button routerLink="/crear-taquillero" color="danger">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+
+  <ion-list>
+    <ion-item *ngFor="let t of taquilleros|async" lines="full">
+      <ion-card (click)="openDetailModalTaqui(t)">
+        <ion-card-content>
+          <ion-label><strong>Nombre: </strong>{{t.name}}</ion-label>
+          <ion-label><strong>Apellido: </strong>{{t.lastname}}</ion-label>
+          <ion-label><strong>Email: </strong>{{t.email}}</ion-label>
+        </ion-card-content>
+      </ion-card>
+    </ion-item>
+  </ion-list>
+</ion-content>

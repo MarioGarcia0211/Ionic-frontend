@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Administrador</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <ion-text>
+    <h1>Datos del administrador</h1>
+  </ion-text>
+
+  <div class="datos">
+    <ion-list>
+      <ion-item lines="full">
+        <ion-label>
+          <strong>Nombre:</strong>
+        </ion-label>
+        <ion-note slot="end" color="danger">{{admin.name}}</ion-note>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label>
+          <strong>Apellido:</strong>
+        </ion-label>
+        <ion-note slot="end" color="danger">{{admin.lastname}}</ion-note>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label>
+          <strong>N° de identificación:</strong>
+        </ion-label>
+        <ion-note slot="end" color="danger">{{admin.identification}}</ion-note>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label>
+          <strong>Email:</strong>
+        </ion-label>
+        <ion-note slot="end" color="danger">{{admin.email}}</ion-note>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label>
+          <strong>Estado:</strong>
+        </ion-label>
+        <ion-note slot="end" color="danger">{{admin.status}}</ion-note>
+      </ion-item>
+    </ion-list>
+  </div>
+
+  <div class="botones">
+    <ion-button expand="block" (click)="openEdit()">
+      <ion-icon name="create"></ion-icon> Editar
+    </ion-button>
+
+    <ion-button expand="block" color="danger" (click)="onDelete()">
+      <ion-icon name="trash"></ion-icon> Eliminar
+    </ion-button>
+  </div>
+</ion-content>

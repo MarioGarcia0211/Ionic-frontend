@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar color="danger">
+
+    <ion-buttons slot="start" *ngIf="!isEditMode">
+      <ion-back-button defaultHref="/inicio-admin/tabs1"></ion-back-button>
+    </ion-buttons>
+
+    <ion-title>{{isEditMode ? 'Actualizar' : 'Crear'}} Administrador</ion-title>
+
+    <ion-buttons slot="end" *ngIf="isEditMode">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+<form [formGroup]='form'>
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+    </ion-item>
+    <div *ngIf="form.controls['name'].errors && form.controls['name'].touched">
+      <ion-text color="danger">*Campo requerido.</ion-text>
+    </div>
+<!-- ---------------------------------------------------------------------------------------------- -->
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input type="text" formControlName="lastname"></ion-input>
+    </ion-item>
+    <div *ngIf="form.controls['lastname'].errors && form.controls['lastname'].touched">
+      <ion-text color="danger">*Campo requerido.</ion-text>
+    </div>
+<!-- ---------------------------------------------------------------------------------------------- -->
+    <ion-item>
+      <ion-label position="floating">Número de indentificación</ion-label>
+      <ion-input type="number" formControlName="identification"></ion-input>
+    </ion-item>
+    <div *ngIf="form.controls['identification'].errors && form.controls['identification'].touched">
+      <ion-text color="danger">*Campo requerido.</ion-text>
+    </div>
+<!-- ---------------------------------------------------------------------------------------------- -->
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+    </ion-item>
+    <div *ngIf="form.controls['email'].errors && form.controls['email'].touched">
+      <ion-text color="danger">*El email es requerido.</ion-text>
+    </div>
+<!-- ---------------------------------------------------------------------------------------------- -->
+    <ion-item>
+      <ion-label position="floating">Contraseña</ion-label>
+      <ion-input type="password" formControlName="password"></ion-input>
+    </ion-item>
+    <div *ngIf="form.controls['password'].errors && form.controls['password'].touched">
+      <ion-text color="danger">*Campo requerido.</ion-text>
+    </div>
+<!-- ---------------------------------------------------------------------------------------------- -->
+    <div class="boton">
+      <ion-button expand="block" (click)="crear()" [disabled]="form.invalid">{{isEditMode ? 'Actualizar' : 'Crear'}} Administrador</ion-button>
+    </div>
+  </form>
+
+</ion-content>

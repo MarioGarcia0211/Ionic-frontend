@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" >
+      <ion-back-button defaultHref="/inicio-taqui/tabs3"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear reserva</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <form [formGroup]='form'>
+    <ion-item (click)="showPicker = !showPicker" lines="full">
+      <ion-icon slot="start" name="calendar-outline" color="primary"></ion-icon>
+      <ion-label position="">Fecha</ion-label>
+      <ion-text slot="end">{{formattedString}}</ion-text>
+    </ion-item>
+    <ion-datetime formControlName="date" presentation="date" locale="es-ES" #datetime *ngIf="showPicker" [value]="dateValue" size="cover" (ionChange)="dateChanged(datetime.value)" showDefaultButtons="true" (ionCancel)="showPicker = false;"></ion-datetime>
+
+    <ion-item lines="full">
+      <ion-icon slot="start" name="person-add-outline" color="primary"></ion-icon>
+      <ion-label position="">N° de personas</ion-label>
+
+      <ion-input slot="end" type="number" formControlName="amount"></ion-input>
+    </ion-item>
+<!-- -------------------------------------------------------------- -->
+    <ion-item lines="full">
+      <ion-label position="floating">Nombre del taquillero</ion-label>
+      <ion-select placeholder="Elegir taquillero" formControlName="fkprofiletaqui">
+        <ion-select-option *ngFor="let opcion of taquilleros | async" [value]="opcion.id">
+          {{opcion.name}}
+        </ion-select-option>
+      </ion-select>
+      <!-- <ion-input type="text" formControlName="taquillero"></ion-input> -->
+    </ion-item>
+
+    <ion-item lines="full">
+      <ion-label position="floating">Nombre del turista</ion-label>
+      <!-- <ion-input type="text" formControlName="turista"></ion-input> -->
+      <ion-select placeholder="Elegir turista" formControlName="fkprofileturis">
+        <ion-select-option *ngFor="let opcion of turistas | async" [value]="opcion.id">
+          {{opcion.name}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+<!-- ---------------------------------------------------------------------------------------------- -->
+    <div class="boton">
+      <ion-button expand="block" (click)="crear()" [disabled]="form.invalid">Crear reserva</ion-button>
+    </div>
+  </form>
+
+</ion-content>
